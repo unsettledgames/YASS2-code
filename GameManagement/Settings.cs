@@ -74,10 +74,10 @@ public class Settings : MonoBehaviour
     {
         Instance = this;
         m_Volume = GameObject.FindGameObjectWithTag("PostProcessing").GetComponent<Volume>();
-        m_Volume.profile.TryGet<Bloom>(out m_Bloom);
-        m_Volume.profile.TryGet<Tonemapping>(out m_Tonemapping);
-        m_Volume.profile.TryGet<ColorAdjustments>(out m_ColorAdjustments);
-        m_Volume.profile.TryGet<ChannelMixer>(out m_ChannelMixer);
+        m_Volume.profile.TryGet(out m_Bloom);
+        m_Volume.profile.TryGet(out m_Tonemapping);
+        m_Volume.profile.TryGet(out m_ColorAdjustments);
+        m_Volume.profile.TryGet(out m_ChannelMixer);
     }
 
     public void Start()
@@ -252,9 +252,6 @@ public class Settings : MonoBehaviour
 
     private void SavePrefs()
     {
-        if (!m_Inited)
-            return;
-
         // Store default player prefs
         PlayerPrefs.SetFloat("Difficulty", Difficulty);
         PlayerPrefs.SetFloat("MusicVolume", MusicVolume);

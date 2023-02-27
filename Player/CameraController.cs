@@ -11,24 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float RotationEasing;
     [SerializeField] private float TiltY;
 
-    private bool m_PressedAlt = false;
-    private bool m_ReleasedAlt = false;
-
-    private Camera m_BackCamera;
-    private Camera m_MainCamera;
     private Vector3 m_DyingDistance = Vector3.zero;
-
-    private void Start()
-    {
-        m_BackCamera = transform.GetChild(0).GetComponent<Camera>();
-        m_MainCamera = GetComponent<Camera>();
-    }
-
-    private void Update()
-    {
-        m_PressedAlt = Input.GetKeyDown(KeyCode.LeftAlt);
-        m_ReleasedAlt = Input.GetKeyUp(KeyCode.LeftAlt);
-    }
 
     void FixedUpdate()
     {
@@ -48,22 +31,8 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, PlayerAnchor.transform.position, PositionEasing * Time.deltaTime);
             transform.localEulerAngles = new Vector3(xRot, yRot, zRot);
 
-            if (m_MainCamera.enabled)
-            {
-                transform.Rotate(Vector3.right, (Input.mousePosition.y / Screen.height) * -CameraFocusOffsetAmount - TiltY);
-                transform.Rotate(Vector3.up, (Input.mousePosition.x / Screen.width) * CameraFocusOffsetAmount);
-            }
-
-            if (m_PressedAlt)
-            {
-                m_MainCamera.enabled = false;
-                m_BackCamera.enabled = true;
-            }
-            else if (m_ReleasedAlt)
-            {
-                m_MainCamera.enabled = true;
-                m_BackCamera.enabled = false;
-            }
+            transform.Rotate(Vector3.right, (Input.mousePosition.y / Screen.height) * -CameraFocusOffsetAmount - TiltY);
+            transform.Rotate(Vector3.up, (Input.mousePosition.x / Screen.width) * CameraFocusOffsetAmount);
         }
     }
 }

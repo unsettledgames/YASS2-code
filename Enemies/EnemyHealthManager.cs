@@ -50,6 +50,11 @@ public class EnemyHealthManager : MonoBehaviour
         return m_CurrHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return MaxHealth;
+    }
+
     private IEnumerator Flash()
     {
         m_IsFlashing = true;

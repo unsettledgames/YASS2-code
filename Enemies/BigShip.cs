@@ -94,7 +94,7 @@ public class BigShip : MonoBehaviour
         if (!hasGenerators)
         {
             Rigidbody body = GetComponent<Rigidbody>();
-
+            body.useGravity = true;
             m_IsDying = true;
             body.AddTorque(new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f)));
         }
