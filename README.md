@@ -1,5 +1,5 @@
 # Yet Another SpaceShooter 2
-[Download it on itch!](https://unsettledgames.itch.io/yass-2)
+[Download it on itch!](https://www.unsettledgames.itch.io/yass-2)
 ![image](https://user-images.githubusercontent.com/47360416/221626395-2e749c78-ebbe-431a-b82f-5d14df7ee2c5.png)
 ## Features
 - Simple but engaging game loop
